@@ -7,6 +7,17 @@ TBD
 
 Usage
 -----
+Extension implements Auto-Discovery mechanism in Jersey. If you have it disable - you should register Feature class.
+``` java
+public class ExampleApplication extends ResourceConfig {
+    public ExampleApplication() {
+        super(ProtobufFeature.class);
+    }
+}
+```
+
+Examples
+--------
 Server
 ``` java
 @Path("/")
