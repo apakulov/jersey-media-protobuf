@@ -4,7 +4,7 @@ Protobuf Provider for Jersey 2.x
 Install
 -------
 Maven
-```
+``` xml
 <dependency>
   <groupId>com.pakulov.jersey.media</groupId>
   <artifactId>jersey-media-protobuf</artifactId>
@@ -13,7 +13,7 @@ Maven
 ```
 
 Gradle
-```
+``` groovy
 compile 'com.pakulov.jersey.media:jersey-media-protobuf:0.1.0'
 ```
 
@@ -33,7 +33,7 @@ Examples
 Server
 ``` java
 @Path("/")
-public static class ProtobufResource {
+public class ProtobufResource {
     @GET
     @Produces(MediaTypeExt.APPLICATION_PROTOBUF)
     public Person getPerson() {
