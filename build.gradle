@@ -1,9 +1,11 @@
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
+        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7.1'
         classpath 'nl.javadude.gradle.plugins:license-gradle-plugin:0.9.0'
     }
 }
@@ -11,11 +13,12 @@ buildscript {
 apply plugin: 'license'
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'nexus'
 
 defaultTasks 'build'
 
-group 'com.apakulov'
-version '0.1.0'
+group 'com.pakulov.jersey.media'
+version '0.1.1-SNAPSHOT'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
@@ -32,36 +35,34 @@ dependencies {
     testCompile 'org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:2.10.1'
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
+modifyPom {
+    project {
+        name 'Jersey Media Protobuf'
+        description 'Jersey Protobuf entity providers support module.'
+        url 'https://github.com/apakulov/jersey-media-protobuf'
+        inceptionYear '2014'
+
+        scm {
+            url 'https://github.com/apakulov/jersey-media-protobuf'
+            connection 'scm:git:git://github.com/apakulov/jersey-media-protobuf.git'
+            developerConnection 'scm:git:ssh://git@github.com/apakulov/jersey-media-protobuf.git'
         }
-    }
-}
 
-pom.project {
-    name 'jersey-media-protobuf'
-    description 'Applies a header to files, typically a license'
-    url 'https://github.com/apakulov/jersey-media-protobuf'
-    inceptionYear '2014'
-
-    scm { url 'https://github.com/hierynomus/gradle-plugins' }
-
-    licenses {
-        license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
         }
-    }
 
-    developers {
-        developer {
-            id 'apakulov'
-            name 'Alexander Pakulov'
-            url 'http://pakulov.com'
-            email 'a.pakulov@gmail.com'
+        developers {
+            developer {
+                id 'apakulov'
+                name 'Alexander Pakulov'
+                url 'http://pakulov.com'
+                email 'a.pakulov@gmail.com'
+            }
         }
     }
 }

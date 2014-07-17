@@ -3,7 +3,19 @@ Protobuf Provider for Jersey 2.x
 
 Install
 -------
-TBD
+Maven
+```
+<dependency>
+  <groupId>com.pakulov.jersey.media</groupId>
+  <artifactId>jersey-media-protobuf</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+Gradle
+```
+compile 'com.pakulov.jersey.media:jersey-media-protobuf:0.1.0'
+```
 
 Usage
 -----
